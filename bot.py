@@ -6,7 +6,7 @@ import random
 
 # --- НАСТРОЙКИ ---
 TELEGRAM_TOKEN = "8811643443:AAHBPtW6cD4wjYX49vkXgxqCAXwIFZjMyjM"
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = "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"
 
 MODEL_NAME = "openrouter/owl-alpha"
 
