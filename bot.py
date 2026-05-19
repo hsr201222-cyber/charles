@@ -9,7 +9,7 @@ processed_messages = set() # Это "память", чтобы бот помни
 TELEGRAM_TOKEN = "8811643443:AAHBPtW6cD4wjYX49vkXgxqCAXwIFZjMyjM"
 OPENROUTER_API_KEY = "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"
 
-MODEL_NAME = "openrouter/free"
+MODEL_NAME = "openrouter/owl-alpha"
 
 # Твой личный Telegram ID для особого режима нежности и задумчивости
 VIP_USER_ID = 8454617664
