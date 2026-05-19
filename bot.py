@@ -3,6 +3,7 @@ import time
 import urllib.request
 import json
 import random
+processed_messages = set() # Это "память", чтобы бот помнил, на что ответил
 
 # --- НАСТРОЙКИ ---
 TELEGRAM_TOKEN = "8811643443:AAHBPtW6cD4wjYX49vkXgxqCAXwIFZjMyjM"
@@ -127,6 +128,22 @@ while True:
             updates = json.loads(response.read().decode('utf-8'))
             if updates.get("result"):
                 for update in updates["result"]:
+                 # СЮДА ВСТАВЛЯТЬ (сразу после for update in updates["result"]:)
+                    last_update_id = update["update_id"]
+                    
+                    if "message" in update:
+                        msg = update["message"]
+                        msg_id = msg.get("message_id")
+                        
+                        # --- ВОТ ЭТОТ БЛОК ИСПРАВЛЯЕТ ДУБЛИ ---
+                        if msg_id in processed_messages:
+                            continue
+                        processed_messages.add(msg_id)
+                        
+                        # Ограничиваем размер памяти, чтобы не перегрузить бота
+                        if len(processed_messages) > 100:
+                            processed_messages.remove(list(processed_messages)[0])
+                        # --------------------------------------
                     last_update_id = update["update_id"]
                     
                     if "message" in update:
